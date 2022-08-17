@@ -1,0 +1,123 @@
+html {
+  background-image: url("./images/pokemon.jpeg");
+  background-size: cover;
+  height: 100vh;
+}
+
+.pokedex {
+  display: grid;
+  grid-template-columns: 4fr 1fr 6fr;
+  grid-template-areas: 
+  "info . display";
+}
+
+.info {
+  grid-area: info;
+  border: 3px solid midnightblue;
+  margin-left: 90px;
+  height: 400px;
+  margin-top: 40px;
+}
+
+.display {
+  display: grid;
+  grid-area: display;
+  grid-template-columns: 1.5fr 4fr 1.5fr;
+  grid-template-areas:
+  "prev-pokemon curr-pokemon next-pokemon";
+  border: 3px solid red;
+  margin-right: 90px;
+  margin-top: 40px;
+  height: 750px;
+}
+
+.prev-pokemon {
+  grid-area: prev-pokemon;
+  background-color: cornflowerblue;
+  display: flex;
+ flex-direction: column;
+justify-content: space-evenly;
+align-items: center;
+}
+  
+.prev-pokemon img {
+    height: 100px;
+  }
+
+  .stats-page {
+    text-align: center;
+   
+  }
+
+  .abilities {
+    border-bottom: 1px solid black;
+    padding-bottom:5px;
+  }
+
+  .mini-poke-image{
+    height: 50px;
+  }
+
+.curr-pokemon {
+  display: grid;
+  grid-template-rows: 5fr 2fr 1fr 1fr;
+  grid-template-areas:
+  "image"
+  "name"
+  "types"
+  "count";
+  grid-area: curr-pokemon;
+  border: 3px solid white;
+}
+
+.next-pokemon {
+  grid-area: next-pokemon;
+  background-color: cornflowerblue;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;;
+}
+
+.next-pokemon img {
+  height: 100px;
+}
+
+.types {
+  grid-area: types;
+  background-color: cornflowerblue;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.name {
+  grid-area:name;
+  border: 3px solid black;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.count {
+  grid-area: count;
+  background-color: cornflowerblue;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.image {
+  grid-area: image;
+  border: 3px solid brown;
+  display:flex;
+  justify-content: center;
+  align-items: center;;
+}
+
+.poke-image {
+  height: 250px;
+}
