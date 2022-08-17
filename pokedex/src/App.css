@@ -29,11 +29,12 @@ html {
   margin-right: 90px;
   margin-top: 40px;
   height: 750px;
+  
 }
 
 .prev-pokemon {
   grid-area: prev-pokemon;
-  background-color: cornflowerblue;
+  background-color:tomato;
   display: flex;
  flex-direction: column;
 justify-content: space-evenly;
@@ -72,7 +73,7 @@ align-items: center;
 
 .next-pokemon {
   grid-area: next-pokemon;
-  background-color: cornflowerblue;
+  background-color:tomato;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -120,4 +121,16 @@ align-items: center;
 
 .poke-image {
   height: 250px;
+}
+
+#count-display {
+  font-size: 20px;
+  color: black;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  border-radius: 30% 30% 0% 0%;;
+  background-color: white;
+  margin-bottom: 0;
+  -webkit-text-stroke: 0.5px black;
 }

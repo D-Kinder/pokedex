@@ -1,4 +1,5 @@
 import {useEffect, useState} from 'react'
+import GRASS from "../images/GRASS.png"
 
 export default function Currpokemon ({allPokemon, currentPokemon, pokedexNumber}) {
     const [image, setImage] = useState("")
@@ -12,11 +13,15 @@ export default function Currpokemon ({allPokemon, currentPokemon, pokedexNumber}
    const [baseSpAtt, setBaseSpAtt] = useState(0)
    const [baseSpDef, setBaseSpDef] = useState(0)
    const [baseSpd, setBaseSpd] = useState(0)
+   const [shinyImage, setShinyImage] = useState("")
+   const [shiny, setShiny] = useState(false)
    
     useEffect(() => {
         fetch(currentPokemon.url).then((res) => res.json())
         .then((information) => {
             setImage(information.sprites.other['official-artwork'].front_default)
+            setShinyImage(information.sprites.front_shiny)
+            
             setPokemon(information.name.toUpperCase())
             
             const types = information.types.map((type) => {
@@ -38,10 +43,17 @@ export default function Currpokemon ({allPokemon, currentPokemon, pokedexNumber}
             
         })
     }, [currentPokemon])
-    const baseStatTotal = baseHP + baseAtt + baseDef + baseSpAtt + baseSpDef + baseSpd
     
+    const baseStatTotal = baseHP + baseAtt + baseDef + baseSpAtt + baseSpDef + baseSpd
+   
     function onClick () {
         setClicked((current) => {
+            return !current
+        })
+    }
+
+    function toggleShiny () {
+        setShiny((current) => {
             return !current
         })
     }
@@ -49,7 +61,7 @@ export default function Currpokemon ({allPokemon, currentPokemon, pokedexNumber}
     return (
         <div className="curr-pokemon">
             <div className="image" onClick={onClick}>
-                {clicked === false ? <img className="poke-image" src={image} alt="pokemon"></img> :
+                {shiny === true ? <img className="poke-image" src={shinyImage}></img> : clicked === false ? <img className="poke-image" src={image} alt="pokemon"></img> :
                     <div className="stats-page">
                         <img className="mini-poke-image" src={image}></img>
                         <p>Abilities</p>
@@ -66,12 +78,13 @@ export default function Currpokemon ({allPokemon, currentPokemon, pokedexNumber}
             </div>
             <div className="name">
             <p>{pokemon}</p>
+            <button onClick={toggleShiny}>Shiny</button>
             </div>
             <div  className="types">
-            <p>{types}</p>
+            <img src={types}></img>
             </div>
             <div className="count">
-            <p>{pokedexNumber+1}/1153</p>
+            <p id="count-display">{pokedexNumber+1}/1153</p>
             </div>
         </div>
     )
