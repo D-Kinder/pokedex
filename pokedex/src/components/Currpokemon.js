@@ -15,6 +15,7 @@ export default function Currpokemon ({allPokemon, currentPokemon, pokedexNumber}
    const [baseSpd, setBaseSpd] = useState(0)
    const [shinyImage, setShinyImage] = useState("")
    const [shiny, setShiny] = useState(false)
+
    
     useEffect(() => {
         fetch(currentPokemon.url).then((res) => res.json())
@@ -23,12 +24,14 @@ export default function Currpokemon ({allPokemon, currentPokemon, pokedexNumber}
             setShinyImage(information.sprites.front_shiny)
             
             setPokemon(information.name.toUpperCase())
+
+            
             
             const types = information.types.map((type) => {
                 return type.type.name.toUpperCase()
             }).join(" ")
             setTypes(types)
-
+            
             const abilities = information.abilities.map((ability) => {
                 return ability.ability.name.toUpperCase()
             }).join(" ")
